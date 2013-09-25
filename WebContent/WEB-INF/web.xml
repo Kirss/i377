@@ -19,4 +19,27 @@
     <servlet-name>Hello</servlet-name>
     <url-pattern>/Hello</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SessiooniId</display-name>
+    <servlet-name>SessiooniId</servlet-name>
+    <servlet-class>test.SessiooniId</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SessiooniId</servlet-name>
+    <url-pattern>/SessiooniId</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SessioonideArv</display-name>
+    <servlet-name>SessioonideArv</servlet-name>
+    <servlet-class>test.SessioonideArv</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SessioonideArv</servlet-name>
+    <url-pattern>/SessioonideArv</url-pattern>
+  </servlet-mapping>
+  <listener>
+    <listener-class>test.SessionCounterListener</listener-class>
+  </listener>
 </web-app>
