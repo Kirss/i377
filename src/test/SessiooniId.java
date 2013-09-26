@@ -1,10 +1,12 @@
 package test;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 //Esimene servlet n‰itab kasutaja sessiooni id-d ja sessiooni pandud atribuudi v‰‰rtust.
 //See vıimaldab ka sessiooni atribuuti seada. Seadmiseks on servleti parameeter nimega "param".
@@ -16,9 +18,9 @@ public class SessiooniId extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().println("Hello");
-		
-		String id = request.getRequestedSessionId();
-		response.getWriter().println("Your session id is  "+ id);
+				
+		HttpSession sessioon = request.getSession();
+		response.getWriter().println("Your session id is  "+ sessioon.getId());
 		
 		Integer param = null;
 		request.getSession().setAttribute("param", param); 
