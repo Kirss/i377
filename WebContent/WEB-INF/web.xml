@@ -42,4 +42,14 @@
   <listener>
     <listener-class>test.SessionCounterListener</listener-class>
   </listener>
+  <servlet>
+    <description></description>
+    <display-name>SessiooniLopp</display-name>
+    <servlet-name>SessiooniLopp</servlet-name>
+    <servlet-class>test.SessiooniLopp</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SessiooniLopp</servlet-name>
+    <url-pattern>/SessiooniLopp</url-pattern>
+  </servlet-mapping>
 </web-app>

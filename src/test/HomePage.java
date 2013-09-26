@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 //See võimaldab ka sessiooni atribuuti seada. Seadmiseks on servleti parameeter nimega "param".
 //Näide: http://ci.itcollege.ee/part2example/HomePage
 
-public class SessiooniId extends HttpServlet {
+public class HomePage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     
