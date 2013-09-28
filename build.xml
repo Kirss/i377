@@ -8,6 +8,7 @@
 	<property name="ivy.retrieve.pattern" value="${dir.lib}/[artifact]-[type]­[revision].[ext]" />
 	<property name="webContent.dir" location="${basedir}/WebContent" />
 	<property name="war.file" location="kirss.war" />
+	<property name="basedir" location="." />
 
 	<path id="classpath">
 		<fileset dir="lib">
