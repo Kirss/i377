@@ -24,12 +24,12 @@
 		</war>
 	</target>
 
-	<target name="init">
-		<mkdir dir="${classes.dir}" />
-	</target>
-
 	<target name="clean">
 		<delete dir="${build.dir}" />
+	</target>
+
+	<target name="init">
+		<mkdir dir="${classes.dir}" />
 	</target>
 
 	<target name="retrieve" description="retreive dependencies">
