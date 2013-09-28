@@ -10,12 +10,7 @@
 	<property name="war.file" location="kirss.war" />
 
 	<path id="classpath">
-		<fileset dir="lib">
-			<include name="*.jar" />
-		</fileset>
-		<fileset dir="${dir.lib}">
-			<include name="*.jar" />
-		</fileset>
+		<fileset dir="../lib" />
 	</path>
 
 	<target name="compile" depends="clean, init, retrieve">
