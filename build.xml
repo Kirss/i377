@@ -14,7 +14,7 @@
 	</path>
 
 	<target name="compile" depends="clean, init, retrieve">
-		<javac srcdir="${src.dir}" destdir="${classes.dir}" source="1.6" target="1.6" classpathref="classpath" />
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" source="1.6" target="1.6" classpathref="classpath" includeantruntime="false"/>
 	</target>
 
 	<target name="war" depends="compile">
