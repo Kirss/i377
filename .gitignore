@@ -1,6 +1,2 @@
 /build
-
-*.class
-*.jar
-*.war
-*.ear
+/WebContent/WEB-INF/lib
