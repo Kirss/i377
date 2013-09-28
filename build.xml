@@ -10,7 +10,7 @@
 	<property name="war.file" location="kirss.war" />
 
 	<path id="classpath">
-		<fileset dir="../lib" />
+		<fileset dir="lib" />
 	</path>
 
 	<target name="compile" depends="clean, init, retrieve">
