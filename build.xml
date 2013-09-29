@@ -5,8 +5,8 @@
 	<property name="src.dir" location="${basedir}/src" />
 	<property name="build.dir" location="${basedir}/build" />
 	<property name="classes.dir" location="${build.dir}/classes" />
-	<property name="webcontent.dir" location="${basedir}/WebContent" />
-	<property name="lib.dir" location="${webcontent.dir}/WEB-INF/lib" />
+	<property name="webContent.dir" location="${basedir}/WebContent" />
+	<property name="lib.dir" location="${webContent.dir}/WEB-INF/lib" />
 	<property name="ivy.retrieve.pattern" location="${lib.dir}/[artifact][type][revision].[ext]" />
 	<property name="ivylib.dir" location="${basedir}/lib" />
 	<property name="war.file" value="kirss.war" />
