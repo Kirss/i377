@@ -18,9 +18,7 @@ public class HomePage extends HttpServlet {
 		HttpSession sessioon = request.getSession();
 		response.getWriter().println("Your session id is  "+ sessioon.getId());
 		
-		Integer param = null;
-		request.getSession().setAttribute("param", param); 
-		
+		String param = request.getParameter("param");		
 		response.getWriter().println("Session attribute is " + param);
 	}
 

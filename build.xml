@@ -14,7 +14,16 @@
 	<property name="managerUsername" value="tomcat" />
 	<property name="managerPassword" value="tomcat" />
 
-	<path id="classpath">
+	<path id="classpath.compile">
+		<fileset dir="${ivylib.dir}">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${lib.dir}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="classpath.retrieve">
 		<fileset dir="${ivylib.dir}">
 			<include name="*.jar" />
 		</fileset>
@@ -35,12 +44,12 @@
 
 	<target name="compile" depends="clean, init, retrieve">
 		<javac srcdir="${src.dir}" source="1.6" target="1.6" destdir="${classes.dir}" includeantruntime="false">
-			<classpath refid="classpath" />
+			<classpath refid="classpath.compile" />
 		</javac>
 	</target>
 
 	<target name="retrieve" description="retreive dependencies">
-		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="classpath" />
+		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="classpath.retrieve" />
 		<ivy:resolve file="${basedir}/ivy.xml" log="downloadonly" />
 		<ivy:retrieve pattern="${ivy.retrieve.pattern}" conf="default" />
 	</target>
