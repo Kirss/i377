@@ -15,11 +15,11 @@
 		<fileset dir="${web-inf.lib}" />
 	</path>
 
-	<target name="init">
+	<target name="init" depends="clean, retrieve, compile, war">
 		<mkdir dir="${classes.dir}" />
 	</target>
 
-	<target name="compile" depends="clean, init, retrieve">
+	<target name="compile">
 		<javac source="1.6" target="1.6" srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath" includeantruntime="false"/>
 	</target>
 
