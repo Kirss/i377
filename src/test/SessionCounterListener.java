@@ -15,7 +15,9 @@ public class SessionCounterListener implements HttpSessionListener {
 
 	
     public void sessionDestroyed(HttpSessionEvent event) {
-    	totalActiveSessions--;
+    	if (totalActiveSessions>0){
+    		totalActiveSessions--;
+    	}
     }
     
     public static int getTotalActiveSessions() {
