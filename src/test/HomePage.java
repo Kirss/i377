@@ -14,13 +14,13 @@ public class HomePage extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().println("Hello");
-				
+
 		HttpSession sessioon = request.getSession();
 		response.getWriter().println("Your session id is  "+ sessioon.getId());
-		
+
 		String param = request.getParameter("param");		
 		response.getWriter().println("Session attribute is " + param);
 	}
 
-	
+
 }
