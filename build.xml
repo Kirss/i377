@@ -1,23 +1,35 @@
 <?xml version="1.0" ?>
-<project name="JavaProject" xmlns:ivy="antlib:org.apache.ivy.ant">
+<project name="JavaProject" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
 
 	<property name="src.dir" location="src" />
 	<property name="build.dir" location="build" />
+	<property name="lib.dir" location="lib" />
 	<property name="classes.dir" location="${build.dir}/classes" />
-	<property name="dir.lib" value="WebContent/WEB-INF/lib" />
 	<property name="ivy.retrieve.pattern" value="${dir.lib}/[artifact]-[type]­[revision].[ext]" />
 	<property name="webContent.dir" location="WebContent" />
 	<property name="war.file" location="kirss.war" />
+	<property name="web-inf.lib" value="${webContent.dir}/WEB-INF/lib" />
 
 	<path id="classpath">
 		<fileset dir="lib" />
+		<fileset dir="${web-inf.lib}" />
 	</path>
 
-	<target name="compile" depends="clean, init, retrieve">
-		<javac srcdir="${src.dir}" destdir="${classes.dir}" source="1.6" target="1.6" classpathref="classpath" includeantruntime="false"/>
+	<target name="init">
+		<mkdir dir="${classes.dir}" />
 	</target>
 
-	<target name="war" depends="compile">
+	<target name="compile" depends="clean, init, retrieve">
+		<javac source="1.6" target="1.6" srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath" includeantruntime="false"/>
+	</target>
+
+	<target name="retrieve" description="retreive dependencies">
+		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="classpath" />
+		<ivy:resolve file="${basedir}/ivy.xml" log="download­only" />
+		<ivy:retrieve pattern="${ivy.retrieve.pattern}" conf="default" />
+	</target>
+
+	<target name="war">
 		<war destfile="${war.file}" webxml="${webContent.dir}/web.xml">
 			<classes dir="${classes.dir}" />
 			<fileset dir="${webContent.dir}" excludes="**/servlet-api-jar­2.5.jar" />
@@ -27,16 +39,5 @@
 	<target name="clean">
 		<delete dir="${build.dir}" />
 	</target>
-
-	<target name="init">
-		<mkdir dir="${classes.dir}" />
-	</target>
-
-	<target name="retrieve" description="retreive dependencies">
-		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="classpath" />
-		<ivy:resolve file="${basedir}/ivy.xml" log="download­only" />
-		<ivy:retrieve pattern="${ivy.retrieve.pattern}" conf="default" />
-	</target>
-
-
+	
 </project>
