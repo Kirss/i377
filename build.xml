@@ -1,20 +1,18 @@
-<?xml version="1.0" ?>
-<project name="JavaProject" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant" default="compile">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="kirss" basedir="." default="compile">
 
 	<property name="basedir" location="." />
 	<property file="user.properties" location="." />
 	<property name="src.dir" location="${basedir}/src" />
 	<property name="build.dir" location="${basedir}/build" />
-	<property name="lib.dir" location="lib" />
 	<property name="classes.dir" location="${build.dir}/classes" />
+	<property name="webcontent.dir" location="${basedir}/WebContent" />
+	<property name="lib.dir" location="${webcontent.dir}/WEB-INF/lib" />
+	<property name="ivy.retrieve.pattern" location="${lib.dir}/[artifact][type][revision].[ext]" />
+	<property name="ivylib.dir" location="${basedir}/lib" />
+	<property name="war.file" value="kirss.war" />
 	<property name="managerUrl" value="http://localhost.8080/manager/text/" />
 	<property name="managerUsername" value="tomcat" />
 	<property name="managerPassword" value="tomcat" />
-	<property name="ivy.retrieve.pattern" value="${dir.lib}/[artifact]-[type]­[revision].[ext]" />
-	<property name="ivylib.dir" location="${basedir}/lib" />
-	<property name="webContent.dir" location="${basedir}/WebContent" />
-	<property name="war.file" location="kirss.war" />
-	<property name="lib.dir" value="${webContent.dir}/WEB-INF/lib" />
 
 	<path id="classpath">
 		<fileset dir="${ivylib.dir}">
@@ -36,7 +34,9 @@
 	</target>
 
 	<target name="compile" depends="clean, init, retrieve">
-		<javac source="1.6" target="1.6" srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath" includeantruntime="false" />
+		<javac srcdir="${src.dir}" source="1.6" target="1.6" destdir="${classes.dir}" includeantruntime="false">
+			<classpath refid="classpath" />
+		</javac>
 	</target>
 
 	<target name="retrieve" description="retreive dependencies">
@@ -44,16 +44,9 @@
 		<ivy:resolve file="${basedir}/ivy.xml" log="downloadonly" />
 		<ivy:retrieve pattern="${ivy.retrieve.pattern}" conf="default" />
 	</target>
-<!--
-	<target name="war">
-		<war destfile="${war.file}" webxml="${webContent.dir}/web.xml">
-			<classes dir="${classes.dir}" />
-			<fileset dir="${webContent.dir}" excludes="**/servlet-api-jar­2.5.jar" />
-		</war>
-	</target>
--->
+
 	<target name="clean">
 		<delete dir="${build.dir}" />
 	</target>
-
+	
 </project>
