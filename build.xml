@@ -1,31 +1,45 @@
 <?xml version="1.0" ?>
-<project name="JavaProject" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+<project name="JavaProject" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant" default="compile">
 
 	<property name="src.dir" location="src" />
 	<property name="build.dir" location="build" />
 	<property name="lib.dir" location="lib" />
 	<property name="classes.dir" location="${build.dir}/classes" />
+	<property name="managerUrl" value="http://localhost.8080/manager/text/" />
+	<property name="managerUsername" value="tomcat" />
+	<property name="managerPassword" value="tomcat" />
 	<property name="ivy.retrieve.pattern" value="${dir.lib}/[artifact]-[type]­[revision].[ext]" />
+	<property name="ivylib.dir" location="${basedir}/lib" />
 	<property name="webContent.dir" location="WebContent" />
 	<property name="war.file" location="kirss.war" />
 	<property name="web-inf.lib" value="${webContent.dir}/WEB-INF/lib" />
 
 	<path id="classpath">
-		<fileset dir="lib" />
-		<fileset dir="${web-inf.lib}" />
+		<fileset dir="lib">
+			<include name="**.jar" />
+		</fileset>
+		<fileset dir="${web-inf.lib}">
+			<include name="**.jar" />
+		</fileset>
+	</path>
+	
+	<path id="classpath.tomcat">
+		<fileset dir="${tomcat.dir}/lib">
+			<include name="*.jar" />
+		</fileset>
 	</path>
 
-	<target name="init" depends="clean, retrieve, compile, war">
+	<target name="init">
 		<mkdir dir="${classes.dir}" />
 	</target>
 
-	<target name="compile">
-		<javac source="1.6" target="1.6" srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath" includeantruntime="false"/>
+	<target name="compile" depends="clean, init, retrieve">
+		<javac source="1.6" target="1.6" srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath" includeantruntime="false" />
 	</target>
 
 	<target name="retrieve" description="retreive dependencies">
 		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="classpath" />
-		<ivy:resolve file="${basedir}/ivy.xml" log="download­only" />
+		<ivy:resolve file="${basedir}/ivy.xml" log="downloadonly" />
 		<ivy:retrieve pattern="${ivy.retrieve.pattern}" conf="default" />
 	</target>
 
@@ -39,5 +53,5 @@
 	<target name="clean">
 		<delete dir="${build.dir}" />
 	</target>
-	
+
 </project>
