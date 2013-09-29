@@ -23,7 +23,7 @@
     <description></description>
     <display-name>HomePage</display-name>
     <servlet-name>HomePage</servlet-name>
-    <servlet-class>test.HomePage</servlet-class>
+    <servlet-class>HomePage</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>HomePage</servlet-name>
