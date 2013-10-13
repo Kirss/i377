@@ -9,7 +9,7 @@
 	<property name="lib.dir" location="${webContent.dir}/WEB-INF/lib" />
 	<property name="ivy.retrieve.pattern" location="${lib.dir}/[artifact][type][revision].[ext]" />
 	<property name="ivylib.dir" location="${basedir}/lib" />
-	<property name="war.file" value="kirss.war" />
+	<property name="war.file" value="Kirss.war" />
 	<property name="managerUrl" value="http://localhost.8080/manager/text/" />
 	<property name="managerUsername" value="tomcat" />
 	<property name="managerPassword" value="tomcat" />
@@ -52,6 +52,13 @@
 		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="classpath.retrieve" />
 		<ivy:resolve file="${basedir}/ivy.xml" log="downloadonly" />
 		<ivy:retrieve pattern="${ivy.retrieve.pattern}" conf="default" />
+	</target>
+
+	<target name="war">
+		<war destfile="${war.file}" webxml="${webContent.dir}/WEB-INF/web.xml">
+			<classes dir="${classes.dir}" />
+			<fileset dir="${webContent.dir}" excludes="**/servlet-api-jar­2.5.jar" />
+		</war>
 	</target>
 
 	<target name="clean">
