@@ -9,12 +9,12 @@ public class ServletContextInitializer implements ServletContextListener{
 
    @Override
    public void contextInitialized(ServletContextEvent arg0) {
-//      SetupDao setupDao = new SetupDao();
-//
-//      if(!databaseExists()) {
-//         setupDao.createSchema();
-//         setupDao.addTestData();
-//      }
+      SetupDao setupDao = new SetupDao();
+
+      if(!databaseExists()) {
+         setupDao.createSchema();
+         setupDao.addTestData();
+      }
    }
 
    @Override
@@ -22,7 +22,7 @@ public class ServletContextInitializer implements ServletContextListener{
       
    }
 
-//   private boolean databaseExists() {
-//      return new File(System.getProperty("user.home") + "/data/Kirss/db.script").exists();
-//   }
+   private boolean databaseExists() {
+      return new File(System.getProperty("user.home") + "/data/Kirss/db.script").exists();
+   }
 }
