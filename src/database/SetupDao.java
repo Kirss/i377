@@ -1,4 +1,4 @@
-package teineosa;
+package database;
 
 import java.io.File;
 
@@ -8,11 +8,11 @@ import org.apache.tools.ant.taskdefs.SQLExec;
 public class SetupDao extends AbstractDao {
 
    public void createSchema() {
-      executeSqlFromFile(getClassPathFile("schema.sql"));
+      executeSqlFromFile(getClassPathFile("Schema.sql"));
    }
 
    public void addTestData()  {
-      executeSqlFromFile(getClassPathFile("testData.sql"));
+      executeSqlFromFile(getClassPathFile("Testdata.sql"));
 
    }
 

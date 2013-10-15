@@ -1,7 +1,6 @@
-package teineosa;
+package database;
 
 import java.sql.*;
-
 import org.apache.commons.dbutils.DbUtils;
 
 public abstract class AbstractDao {
@@ -49,3 +48,4 @@ public abstract class AbstractDao {
     }
 
 }
+

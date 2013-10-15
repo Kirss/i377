@@ -1,4 +1,4 @@
-package teineosa;
+package database;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -39,13 +39,13 @@ public class Dao extends AbstractDao {
       return true;
    }
    
-   public List<Asi> search(String keyword) throws SQLException{
-      List<Asi> items = new ArrayList<Asi>();
+   public List<Item> search(String keyword) throws SQLException{
+      List<Item> items = new ArrayList<Item>();
       try {
          st = getConnection().createStatement();
          rs = st.executeQuery("SELECT * FROM unit WHERE LCASE(name) LIKE '%" + keyword.toLowerCase() + "%'");
          while(rs.next()) {
-            Asi item = new Asi();
+            Item item = new Item();
             item.setId(rs.getInt("id"));
             item.setName(rs.getString("name"));
             item.setCode(rs.getString("code"));
@@ -58,13 +58,13 @@ public class Dao extends AbstractDao {
       return items;
    }
    
-   public List<Asi> findAllItems() throws SQLException {
-      List<Asi> items = new ArrayList<Asi>();
+   public List<Item> findAllItems() throws SQLException {
+      List<Item> items = new ArrayList<Item>();
       try {
          st = getConnection().createStatement();
          rs = st.executeQuery("SELECT * FROM unit");
          while(rs.next()) {
-        	Asi item = new Asi();
+            Item item = new Item();
             item.setId(Integer.parseInt(rs.getString("id")));
             item.setName(rs.getString("name"));
             item.setCode(rs.getString("code"));

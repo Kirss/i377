@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-  <display-name>JavaProject</display-name>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>JavaWeb</display-name>
+  <listener>
+    <listener-class>listener.ServletContextInitializer</listener-class>
+  </listener>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -9,6 +12,16 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>Hello</display-name>
+    <servlet-name>Hello</servlet-name>
+    <servlet-class>test.Hello</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Hello</servlet-name>
+    <url-pattern>/Hello</url-pattern>
+  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>HomePage</display-name>
@@ -39,17 +52,24 @@
     <servlet-name>SessionCount</servlet-name>
     <url-pattern>/SessionCount</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SessionCounterListener</display-name>
+    <servlet-name>SessionCounterListener</servlet-name>
+    <servlet-class>test.SessionCounterListener</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SessionCounterListener</servlet-name>
+    <url-pattern>/SessionCounterListener</url-pattern>
+  </servlet-mapping>
   <listener>
     <listener-class>test.SessionCounterListener</listener-class>
-  </listener>
-  <listener>
-    <listener-class>teineosa.ServletInitializerListener</listener-class>
   </listener>
   <servlet>
     <description></description>
     <display-name>Add</display-name>
     <servlet-name>Add</servlet-name>
-    <servlet-class>teineosa.servlets.Add</servlet-class>
+    <servlet-class>test3.Add</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Add</servlet-name>
@@ -59,7 +79,7 @@
     <description></description>
     <display-name>Delete</display-name>
     <servlet-name>Delete</servlet-name>
-    <servlet-class>teineosa.servlets.Delete</servlet-class>
+    <servlet-class>test3.Delete</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Delete</servlet-name>
@@ -69,7 +89,7 @@
     <description></description>
     <display-name>Search</display-name>
     <servlet-name>Search</servlet-name>
-    <servlet-class>teineosa.servlets.Search</servlet-class>
+    <servlet-class>test3.Search</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Search</servlet-name>
@@ -77,12 +97,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>InsertData</display-name>
-    <servlet-name>InsertData</servlet-name>
-    <servlet-class>teineosa.servlets.InsertData</servlet-class>
+    <display-name>SampleData</display-name>
+    <servlet-name>SampleData</servlet-name>
+    <servlet-class>test3.SampleData</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>InsertData</servlet-name>
-    <url-pattern>/InsertData</url-pattern>
+    <servlet-name>SampleData</servlet-name>
+    <url-pattern>/SampleData</url-pattern>
   </servlet-mapping>
 </web-app>
